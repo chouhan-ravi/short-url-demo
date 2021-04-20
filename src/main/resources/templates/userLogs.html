@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Logs</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<table id="example" class="table table-bordered" style="width: 100%">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Short URL</th>
+        <th>Log Info</th>
+        <th>Created On</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="log : ${userLogs}">
+        <td th:text="${log.id}">#</td>
+        <td th:text="${log.shortURL}">Short URL</td>
+        <td th:text="${log.logInfo}">Log Info</td>
+        <td th:text="${#temporals.format(log.createdOn, 'dd-MM-yyyy HH:mm')}">Created On</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

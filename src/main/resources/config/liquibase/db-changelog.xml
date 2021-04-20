@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="1" author="ravindra.kumar.chouhan">
+        <createTable tableName ="short_urls">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="original_url" type="varchar(1000)"/>
+            <column name="short_url" type="varchar(20)"/>
+            <column name="created_on" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName ="user_logs">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="short_url" type="varchar(20)"/>
+            <column name="created_on" type="timestamp"/>
+            <column name="log_info" type="text"/>
+        </createTable>
+
+        <createSequence incrementBy="1"
+                        sequenceName="seq_unique_id"
+                        startValue="10000000" />
+        <!-- For insert a new record testing purpose only -->
+        <loadData tableName="short_urls"
+                  encoding="UTF-8"
+                  file="config/liquibase/urls.csv"
+                  separator=";">
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

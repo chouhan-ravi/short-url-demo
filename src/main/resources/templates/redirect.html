@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Short URL - Redirect</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="refresh" th:content="'2;url=https://'+${originalURL}" />
+</head>
+<body>
+This page has moved. Click <a th:href="'https://'+${originalURL}">here</a> to go to the new page.
+</body>
+</html>
+
