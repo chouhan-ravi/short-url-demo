@@ -1,13 +1,17 @@
 package com.shorturl.shorturldemo.controller;
 
 import com.shorturl.shorturldemo.dto.ShortUrlDTO;
+import com.shorturl.shorturldemo.model.UserLog;
 import com.shorturl.shorturldemo.service.ShortURLService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/api/url")
@@ -43,5 +47,11 @@ public class ShortUrlController {
             return new ResponseEntity<>("shortURL not exist", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(shortURLService.getURL(shortURL), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/logs")
+    public ResponseEntity<?> viewLogs(Model model) {
+        List<UserLog> logs = shortURLService.getAllLogs();
+        return new ResponseEntity<>(logs, HttpStatus.OK);
     }
 }

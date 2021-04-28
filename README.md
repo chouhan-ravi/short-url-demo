@@ -11,6 +11,7 @@
 * Themeleaf
 * H2 Database
 * Maven
+* Springdoc-openapi or swagger-ui
 
 ### Requirements
 
@@ -29,6 +30,8 @@ For Spring Boot Application
 ### Viewing
 
 * Go to in a browser - `http://localhost:8081`
+* Swagger UI - `http://localhost:8081/swagger-ui-custom.html`
+* API Docs - `http://localhost:8081/api-docs`
 
 ### REST API Overview
 
